@@ -11,6 +11,14 @@
 
 Mảng là các nhóm các biến dữ liệu giống nhau và được gọi bằng một tên chung.Có hai loại mảng: mảng một chiều và mảng đa chiều.
 
+VD:
+
+- Mảng một chiều
+  ![mảng một chiều](img/unknown.png)
+
+* Mảng đa chiều
+  ![mảng một chiều](img/unknoswn.png)
+
 - ### Mảng một chiều
   Cú pháp khai báo mảng:
 
@@ -18,10 +26,22 @@ Mảng là các nhóm các biến dữ liệu giống nhau và được gọi b�
  <kiểu dữ liệu>[] tên mảng
 ```
 
+VD
+
+```java:
+int[] myList;
+```
+
 Cú pháp cấp phát bộ nhớ để tạo mảng:
 
 ```java:
 <tên mảng> = new <kiểu dữ liệu>[Kích cỡ mảng]
+```
+
+VD
+
+```java:
+int[] myList = new int[10];
 ```
 
 Cú pháp rút gọn hơn:
@@ -37,7 +57,7 @@ Ví dụ
 Double mylist = new Double[10];
 ```
 
-Cú pháp khởi tại cho mảng:
+Cú pháp khởi tạo cho mảng:
 
 ```java:
 <kiểu dữ liệu>[]<tên mảng> = {<giá trị>,...}
@@ -47,7 +67,7 @@ Ví dụ
 
 ```java:
 
-<tên mảng> = new <kiểu dữ liệu>[Kích cỡ mảng]
+int[] myList = {1,2,5,5,3,5};
 
 ```
 
@@ -61,6 +81,12 @@ Cú pháp khai báo:
 <kiểu dữ liệu> [][] <tên mảng> = new <kiểu dữ liệu> [kích cỡ hàng][kích cỡ cột];
 ```
 
+VD
+
+```java:
+int[][] myList = new int[10][10];
+```
+
 Cú pháp khởi tạo mảng:
 
 ```java:
@@ -71,6 +97,40 @@ Ví dụ:  int[][] myList = {(1,2,3),(4,5,6)};
 ## 2. **Process array**
 
 Ta thường sử dụng vòng lặp for hay for-each bở vì tất cả những phần tử trong mảng có cùng kiểu dữ liệu và kích thước của mảng đã biết.
+VD:
+
+```java:
+pulic class TestArray{
+    pulic static void main(String[] args){
+        double[] myList = {1.9,2.9,3.5,3.4};
+        for(int i = 0;i<myList.length;i++>){
+            System.out.println(myList[i] + " ");
+        }
+        double total = 0;
+        for (int i = 0 ; i<myList.lenght;i++){
+            total += myList[i];
+        }
+          System.out.println("Total is" +  total);
+        double max = myList[0];
+        for(int i = 1;i < MyList.lenght;i++){
+            if(myList[i] > max){
+                max = myList[i];
+            }
+        }
+    System.out.println("Max is " + max);
+    }
+}
+```
+
+```java:
+Output :
+1.9
+2.9
+3.4
+3.5
+Total is 11.7
+Max is 3.5
+```
 
 ## 3. **Foreach loops**
 
@@ -107,6 +167,36 @@ for(int i = 0; i < myList.lenght; i++){
 }
 ```
 
+```java:
+Output :
+1.9
+2.9
+3.4
+3.5
+
+```
+
+```java:
+public class TestArray{
+    public static void main(String[] args){
+        double[] myList = {1.9,2.9,3.4,3.5};
+        //Print all the array elemets
+        for(double element: myList){
+        System.out.println(element);
+        }
+    }
+}
+```
+
+```java:
+Output :
+1.9
+2.9
+3.4
+3.5
+
+```
+
 ## 4. **Passing Array to Methods**
 
 ### Cấu trúc để truyền mảng vào phương thức
@@ -124,24 +214,30 @@ _array_ là mảng cần truyền vào phương thức.
 Ví dụ
 
 ```java:
-public static int[] Sum(int[] array){
-    int Sum = 0;
-    for(int i = 0; i < array.length ;i++){
-        Sum += array[i];
+public class test{
+    public static int[] Sum(int[] array){
+        int Sum = 0;
+        for(int i = 0; i < array.length ;i++){
+            Sum += array[i];
+        }
+        return Sum ;
     }
-    return Sum ;
-}
 
+    public static void main(Stirng[] args){
+        int[] demo = {1,2,3,10,2,5,23};
+        //Cách 1:
+        System.out.println("Sum = " + Sum(demo));
+        //Cách 2
+        System.out.println("Sum = " + Sum(new int[]{10,20,30,40,50,60,70,80}));
+    }
+}
 ```
 
 ```java:
-public static void main(Stirng[] args){
-    int[] demo = {1,2,3,10,2,5,23};
-    //Cách 1:
-    System.out.println("Sum = " + Sum(demo));
-    //Cách 2
-    System.out.println("Sum = " + Sum(new int[]{10,20,30,40,50,60,70,80}));
-}
+Output:
+Sum1 = 46
+Sum2 = 360
+
 ```
 
 ## 5. **Return an Array from a Method**
@@ -167,6 +263,13 @@ public static void main(String args[]) {
      System.out.println("Array returned from method:" + Arrays.toString(str_Array));
     }
 }
+```
+
+```java:
+Output:
+
+Array returned from method:[Java, C++, Python, Ruby, C]
+
 ```
 
 ## 6. **Array class**
@@ -198,10 +301,15 @@ Dùng để hiển thị tất cả các phần tử trong mảng
  public class toString{
      public static void main(String[] args){
          int[] array = {5,7,2,7,14,34,1};
-         System.out.println(Array.toString(array));
+         System.out.println(Arrays.toString(array));
 
      }
  }
+```
+
+```java:
+Output:
+[5, 7, 2, 7, 14, 34, 1
 ```
 
 ## Methods sort()
@@ -215,10 +323,16 @@ Phương thức này dùng Quicksort
      public static void main(String[] args){
          int[] array = {5,7,2,7,14,34,1};
          Array.sort(array);
-         System.out.println(Array.toString(array));
+         System.out.println(Arrays.toString(array));
 
      }
  }
+```
+
+```java:
+Output:
+[1, 2, 5, 7, 7, 14, 34]
+
 ```
 
 ## Methods binarySearch()
@@ -230,8 +344,13 @@ Phương thức binarySearch() được sử dụng để tìm vị trí của p
      public static void main(String[] args){
          int[] array = {5,7,2,7,14,34,1};
          Array.sort(array);
-         System.out.println(Array.toString(array));
+         System.out.println(Arrays.toString(array));
 
      }
  }
+```
+
+```java:
+Output:
+[1, 2, 5, 7, 7, 14, 34]
 ```
